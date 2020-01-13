@@ -1,4 +1,5 @@
 import 'package:args/args.dart';
+import 'package:money2/money2.dart';
 import 'package:stripe_income/load_functions.dart';
 import 'package:stripe_income/api.dart';
 
@@ -24,7 +25,12 @@ void main(List<String> args) async {
     await api.fetchResults();
 
     var income = api.calculateIncomeAndFees();
-    print("Your income: Total \$(${income['income']}), Net Total \$(${income['income_net']}), Fees \$(${income['fees']})");
+
+    var total = debug ? "\$${income['income']}" : Money.from(income['income'], Currency.create('USD', 2));
+    var totalNet = debug ? "\$${income['income_net']}": Money.from(income['income_net'], Currency.create('USD', 2));
+    var totalFee = debug ? "\$${income['fees']}" : Money.from(income['fees'], Currency.create('USD', 2));
+
+    print("Your income: Total $total, Net Total $totalNet, Fees $totalFee");
 
     // create debug info
     if(debug) {
