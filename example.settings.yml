@@ -1,0 +1,22 @@
+# --
+# This is the start date you want transactions to start at, 
+# greater than or equal to this value. (optional)
+# --
+
+# start_date = 12-01-2018
+
+# --
+# This is the end date you want transactions to stop at, also
+# another optional setting. (optional)
+# --
+
+# end_date = 01-01-2020
+
+# --
+# This is a setting of years dates that you want to ignore, say you want to be 
+# sure to grab all of jan transactions, you can start the date in the previous year
+# then pass the year as an ignore field completely. Or you want to go back and skip years
+# in between. 
+# --
+
+# ignore_year = [2018, 2020]

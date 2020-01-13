@@ -1,0 +1,5 @@
+*.log
+*.exe
+.dart_tool
+api.yml
+settings.yml

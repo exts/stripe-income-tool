@@ -1,0 +1,11 @@
+name: stripe_income
+
+environment: 
+  sdk: '>=2.6.0 <3.0.0'
+
+dependencies:
+  args: ^1.5.2
+  http: ^0.12.0+4
+  yaml: ^2.2.0
+  jiffy: ^2.2.0
+  random_string: ^2.0.1
