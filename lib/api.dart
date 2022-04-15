@@ -14,8 +14,8 @@ class Api {
   String secret;
   OptionsModel options;
   Map<String, dynamic> queryData = Map<String, dynamic>();
-  List<TransactionModel> transactions = List<TransactionModel>();
-  List<TransactionModel> transactionsPagination = List<TransactionModel>();
+  List<TransactionModel> transactions = [];
+  List<TransactionModel> transactionsPagination = [];
 
   String apiUrl = "https://api.stripe.com/v1/balance_transactions";
 
@@ -45,8 +45,7 @@ class Api {
     if(objectId != null) {
       queryData["starting_after"] = objectId;
     }
-
-    var url = buildUri().toString();
+    var url = buildUri();
     var client = http.Client();
     try {
       var headers = {
@@ -72,7 +71,8 @@ class Api {
       if(data["has_more"] != null && data["has_more"] == true && transactionsPagination.length > 0) {
         await fetchResults(transactionsPagination.last.id);
       }
-
+    } catch(error) {
+      print(error);
     } finally {
       client.close();
     }
